@@ -1388,11 +1388,44 @@ class App {
                 this.renderPharmaScienceDashboardEnhanced_v2();
                 break;
             // Alumni Unit
-            case 'alumni-events':
-                this.renderComingSoon('Alumni Events', 'Reunions & CPD Activities');
+            case 'alumni-overview':
+                this.renderAlumniOverview();
                 break;
-            case 'alumni-network':
-                this.renderComingSoon('Alumni Network', 'Connect with Graduates');
+            case 'alumni-directory':
+                this.renderAlumniDirectory();
+                break;
+            case 'alumni-outcomes':
+                this.renderAlumniOutcomes();
+                break;
+            case 'postgraduate-tracking':
+                this.renderPostgraduateTracking();
+                break;
+            case 'alumni-engagement':
+                this.renderAlumniEngagement();
+                break;
+            case 'mentorship-program':
+                this.renderMentorshipProgram();
+                break;
+            case 'preceptor-pipeline':
+                this.renderPreceptorPipeline();
+                break;
+            case 'alumni-events':
+                this.renderAlumniEvents();
+                break;
+            case 'alumni-achievements':
+                this.renderAlumniAchievements();
+                break;
+            case 'alumni-feedback':
+                this.renderAlumniFeedback();
+                break;
+            case 'alumni-documents':
+                this.renderAlumniDocuments();
+                break;
+            case 'alumni-governance':
+                this.renderAlumniGovernance();
+                break;
+            case 'alumni-ecosystem':
+                this.renderAlumniEcosystem();
                 break;
             // Community Service Unit
             case 'community-initiatives':
@@ -8910,5 +8943,357 @@ window.initFacultyCharts = () => {
 
 window.renderFacultyDashboard = () => {
     // No-op for direct call, functionality moved to getFacultyDashboardHTML
+};
+
+// ======================
+// ALUMNI UNIT METHODS
+// ======================
+
+Dashboard.prototype.renderAlumniOverview = function() {
+    this.title.textContent = '🧭 Alumni Overview';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">1,245</div>
+                <div class="kpi-label">Total Alumni</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">856</div>
+                <div class="kpi-label">Active Alumni (12m)</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">94%</div>
+                <div class="kpi-label">Employment Rate</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">342</div>
+                <div class="kpi-label">Board-Certified</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                <div class="kpi-value">128</div>
+                <div class="kpi-label">Postgraduate Training</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                <div class="kpi-value">215</div>
+                <div class="kpi-label">Mentors</div>
+            </div>
+        </div>
+        <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
+            <h3>Program Distribution</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                <div style="padding: 1rem; background: #f5f5f5; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #1B5E20;">650</div>
+                    <div style="font-size: 0.9rem; color: #666;">BPharm</div>
+                </div>
+                <div style="padding: 1rem; background: #f5f5f5; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #1B5E20;">450</div>
+                    <div style="font-size: 0.9rem; color: #666;">PharmD</div>
+                </div>
+                <div style="padding: 1rem; background: #f5f5f5; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #1B5E20;">145</div>
+                    <div style="font-size: 0.9rem; color: #666;">Technician</div>
+                </div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniDirectory = function() {
+    this.title.textContent = '👤 Alumni Directory';
+    this.root.innerHTML = `
+        <div style="padding: 1rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                <input type="text" placeholder="Search alumni..." style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;">
+                <select style="padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;">
+                    <option>All Programs</option>
+                    <option>BPharm</option>
+                    <option>PharmD</option>
+                    <option>Technician</option>
+                </select>
+            </div>
+            <div class="card" style="text-align: center; padding: 2rem;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📋</div>
+                <h3>Alumni Directory</h3>
+                <p style="color: #666; margin-bottom: 1rem;">View detailed profiles with contact information, career paths, and engagement status</p>
+                <button class="btn btn-primary" onclick="alert('Feature coming soon')">Browse Directory</button>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniOutcomes = function() {
+    this.title.textContent = '📊 Alumni Outcomes Tracking';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">750</div>
+                <div class="kpi-label">Employed</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">128</div>
+                <div class="kpi-label">Residency</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">89</div>
+                <div class="kpi-label">Fellowship</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">45</div>
+                <div class="kpi-label">Master's/PhD</div>
+            </div>
+        </div>
+        <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
+            <h3>Employment Sectors</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                <div><strong>Hospital:</strong> 320</div>
+                <div><strong>Community:</strong> 280</div>
+                <div><strong>Industry:</strong> 150</div>
+                <div><strong>Academia:</strong> 75</div>
+                <div><strong>Regulatory:</strong> 45</div>
+                <div><strong>Research:</strong> 30</div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderPostgraduateTracking = function() {
+    this.title.textContent = '🎓 Postgraduate & Certification Tracking';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">128</div>
+                <div class="kpi-label">Residency (PGY1/2)</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">89</div>
+                <div class="kpi-label">Fellowship</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">342</div>
+                <div class="kpi-label">Board Certified</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">78</div>
+                <div class="kpi-label">Master's</div>
+            </div>
+        </div>
+        <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
+            <h3>Board Certifications</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.5rem; border-bottom: 1px solid #eee;"><strong>BCPS:</strong> 156 alumni</li>
+                <li style="padding: 0.5rem; border-bottom: 1px solid #eee;"><strong>BCEMP:</strong> 89 alumni</li>
+                <li style="padding: 0.5rem; border-bottom: 1px solid #eee;"><strong>BCPS-AQ:</strong> 67 alumni</li>
+                <li style="padding: 0.5rem;"><strong>Others:</strong> 30 alumni</li>
+            </ul>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniEngagement = function() {
+    this.title.textContent = '🤝 Alumni Engagement & Participation';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">245</div>
+                <div class="kpi-label">Guest Lectures</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">128</div>
+                <div class="kpi-label">Career Days</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">89</div>
+                <div class="kpi-label">Workshops</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">856</div>
+                <div class="kpi-label">Active Participants</div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderMentorshipProgram = function() {
+    this.title.textContent = '🧠 Mentorship Program';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">215</div>
+                <div class="kpi-label">Alumni Mentors</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">650</div>
+                <div class="kpi-label">Student Mentees</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">4.8/5</div>
+                <div class="kpi-label">Average Rating</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">1,245</div>
+                <div class="kpi-label">Total Pairs</div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderPreceptorPipeline = function() {
+    this.title.textContent = '🏥 Preceptor & Training Sites Pipeline';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">186</div>
+                <div class="kpi-label">Alumni Preceptors</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">52</div>
+                <div class="kpi-label">Training Sites</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">28</div>
+                <div class="kpi-label">Site Coordinators</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">450</div>
+                <div class="kpi-label">Training Capacity</div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniEvents = function() {
+    this.title.textContent = '📅 Events & Communication Center';
+    this.root.innerHTML = `
+        <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;">
+            <h3>Upcoming Alumni Events</h3>
+            <div style="margin-top: 1rem;">
+                <div style="padding: 1rem; border-left: 4px solid #1B5E20; margin-bottom: 0.5rem; background: #f5f5f5;">
+                    <strong>Annual Reunion 2026</strong><br>
+                    <small style="color: #666;">March 15, 2026 | King Saud University</small>
+                </div>
+                <div style="padding: 1rem; border-left: 4px solid #1B5E20; margin-bottom: 0.5rem; background: #f5f5f5;">
+                    <strong>Career Development Webinar</strong><br>
+                    <small style="color: #666;">February 28, 2026 | Online</small>
+                </div>
+                <div style="padding: 1rem; border-left: 4px solid #1B5E20; background: #f5f5f5;">
+                    <strong>Alumni Networking Breakfast</strong><br>
+                    <small style="color: #666;">January 30, 2026 | Riyadh</small>
+                </div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniAchievements = function() {
+    this.title.textContent = '🏆 Achievements & Recognition';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">89</div>
+                <div class="kpi-label">Awards</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">156</div>
+                <div class="kpi-label">Publications</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">45</div>
+                <div class="kpi-label">Leadership Roles</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">23</div>
+                <div class="kpi-label">Media Features</div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniFeedback = function() {
+    this.title.textContent = '📣 Feedback & Surveys';
+    this.root.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="kpi-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="kpi-value">68%</div>
+                <div class="kpi-label">Survey Response Rate</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="kpi-value">4.5/5</div>
+                <div class="kpi-label">Program Satisfaction</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="kpi-value">92%</div>
+                <div class="kpi-label">Practice Readiness</div>
+            </div>
+            <div class="kpi-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="kpi-value">8</div>
+                <div class="kpi-label">Active Surveys</div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniDocuments = function() {
+    this.title.textContent = '📁 Documents & Records';
+    this.root.innerHTML = `
+        <div class="card" style="padding: 1.5rem;">
+            <h3>Document Management</h3>
+            <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                <li style="padding: 0.75rem; border-bottom: 1px solid #eee;"><strong>📄 Consent Forms:</strong> 1,245 records</li>
+                <li style="padding: 0.75rem; border-bottom: 1px solid #eee;"><strong>💬 Communication History:</strong> 5,678 exchanges</li>
+                <li style="padding: 0.75rem; border-bottom: 1px solid #eee;"><strong>📋 CV Submissions:</strong> 892 files</li>
+                <li style="padding: 0.75rem; border-bottom: 1px solid #eee;"><strong>🎖️ Certificates:</strong> 342 issued</li>
+                <li style="padding: 0.75rem;"><strong>📑 Participation Letters:</strong> 215 generated</li>
+            </ul>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniGovernance = function() {
+    this.title.textContent = '🔐 Data Governance & Privacy';
+    this.root.innerHTML = `
+        <div class="card" style="padding: 1.5rem;">
+            <h3>Privacy & Compliance</h3>
+            <div style="margin-top: 1rem;">
+                <div style="padding: 1rem; background: #e8f5e9; border-radius: 6px; margin-bottom: 1rem;">
+                    <strong>✅ GDPR Compliance:</strong> Fully compliant with data protection regulations
+                </div>
+                <div style="padding: 1rem; background: #fff3e0; border-radius: 6px; margin-bottom: 1rem;">
+                    <strong>👁️ Visibility Controls:</strong> Alumni can manage profile visibility preferences
+                </div>
+                <div style="padding: 1rem; background: #e3f2fd; border-radius: 6px;">
+                    <strong>📝 Consent Tracking:</strong> 1,245 consents on file with version history
+                </div>
+            </div>
+        </div>
+    `;
+};
+
+Dashboard.prototype.renderAlumniEcosystem = function() {
+    this.title.textContent = '🔄 Alumni-Student-College Ecosystem';
+    this.root.innerHTML = `
+        <div class="card" style="padding: 1.5rem;">
+            <h3>Ecosystem Connections</h3>
+            <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                <div style="padding: 1rem; background: #f5f5f5; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧠</div>
+                    <strong>Mentorship</strong><br>
+                    <small>215 Alumni → 650 Students</small>
+                </div>
+                <div style="padding: 1rem; background: #f5f5f5; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏥</div>
+                    <strong>Preceptorship</strong><br>
+                    <small>186 Alumni → 450 Capacity</small>
+                </div>
+                <div style="padding: 1rem; background: #f5f5f5; border-radius: 6px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">👔</div>
+                    <strong>Employment</strong><br>
+                    <small>94% Success Rate</small>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1rem; background: #e8f5e9; border-radius: 6px;">
+                <strong>📊 Impact Summary:</strong> Alumni network driving institutional success through mentorship, training site partnerships, and employer engagement
+            </div>
+        </div>
+    `;
 };
 
