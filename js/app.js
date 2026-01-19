@@ -9651,7 +9651,7 @@ Dashboard.prototype.renderAlumniDocuments = function() {
     `;
 };
 
-Dashboard.prototype.renderAlumniGovernance = function() {
+App.prototype.renderAlumniGovernance = function() {
     this.title.textContent = '🔐 Data Governance & Privacy';
     const db = ALUMNI_DATABASE;
     
@@ -9716,7 +9716,7 @@ Dashboard.prototype.renderAlumniGovernance = function() {
     `;
 };
 
-Dashboard.prototype.renderAlumniEcosystem = function() {
+App.prototype.renderAlumniEcosystem = function() {
     this.title.textContent = '🔄 Alumni-Student-College Ecosystem';
     const db = ALUMNI_DATABASE;
     
@@ -9794,9 +9794,9 @@ Dashboard.prototype.renderAlumniEcosystem = function() {
 
 // ============ EVENT LISTENERS & INITIALIZATION ============
 
-// Initialize Dashboard on page load
+// Initialize Alumni listeners after App is ready
 document.addEventListener('DOMContentLoaded', function() {
-    const dashboard = new Dashboard();
+    const app = window.app;
     
     // Setup unit navigation
     const globalNavLinks = document.querySelectorAll('.global-nav-link');
@@ -9831,43 +9831,43 @@ document.addEventListener('DOMContentLoaded', function() {
             // Route to appropriate render method
             switch(view) {
                 case 'alumni-overview':
-                    dashboard.renderAlumniOverview();
+                    app.renderAlumniOverview();
                     break;
                 case 'alumni-directory':
-                    dashboard.renderAlumniDirectory();
+                    app.renderAlumniDirectory();
                     break;
                 case 'alumni-outcomes':
-                    dashboard.renderAlumniOutcomes();
+                    app.renderAlumniOutcomes();
                     break;
                 case 'postgraduate-tracking':
-                    dashboard.renderPostgraduateTracking();
+                    app.renderPostgraduateTracking();
                     break;
                 case 'alumni-engagement':
-                    dashboard.renderAlumniEngagement();
+                    app.renderAlumniEngagement();
                     break;
                 case 'mentorship-program':
-                    dashboard.renderMentorshipProgram();
+                    app.renderMentorshipProgram();
                     break;
                 case 'preceptor-pipeline':
-                    dashboard.renderPreceptorPipeline();
+                    app.renderPreceptorPipeline();
                     break;
                 case 'alumni-events':
-                    dashboard.renderAlumniEvents();
+                    app.renderAlumniEvents();
                     break;
                 case 'alumni-achievements':
-                    dashboard.renderAlumniAchievements();
+                    app.renderAlumniAchievements();
                     break;
                 case 'alumni-feedback':
-                    dashboard.renderAlumniFeedback();
+                    app.renderAlumniFeedback();
                     break;
                 case 'alumni-documents':
-                    dashboard.renderAlumniDocuments();
+                    app.renderAlumniDocuments();
                     break;
                 case 'alumni-governance':
-                    dashboard.renderAlumniGovernance();
+                    app.renderAlumniGovernance();
                     break;
                 case 'alumni-ecosystem':
-                    dashboard.renderAlumniEcosystem();
+                    app.renderAlumniEcosystem();
                     break;
             }
         });
@@ -9879,10 +9879,10 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const view = this.getAttribute('data-view');
-            dashboard.handleNavigation(view);
+            app.handleNavigation(view);
         });
     });
     
     // Initialize with default view (Student Portal for Clinical Affairs)
-    dashboard.handleNavigation('student-portal');
+    app.handleNavigation('student-portal');
 });
