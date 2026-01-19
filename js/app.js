@@ -9797,6 +9797,16 @@ App.prototype.renderAlumniEcosystem = function() {
 // Initialize Alumni listeners after App is ready
 document.addEventListener('DOMContentLoaded', function() {
     const app = window.app;
+
+    // Force Alumni unit as active sidebar and highlight global nav
+    const allUnitNavs = document.querySelectorAll('.unit-nav');
+    allUnitNavs.forEach(nav => nav.classList.add('hidden'));
+    const alumniNav = document.getElementById('nav-alumni');
+    if (alumniNav) alumniNav.classList.remove('hidden');
+    const globalNavLinks = document.querySelectorAll('.global-nav-link');
+    globalNavLinks.forEach(l => l.classList.remove('active'));
+    const alumniGlobalLink = document.querySelector('.global-nav-link[data-unit="alumni"]');
+    if (alumniGlobalLink) alumniGlobalLink.classList.add('active');
     
     // Setup unit navigation
     const globalNavLinks = document.querySelectorAll('.global-nav-link');
@@ -9890,7 +9900,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize with Alumni Overview by default
     if (app && typeof app.renderAlumniOverview === 'function') {
         app.renderAlumniOverview();
-    } else if (typeof app.handleNavigation === 'function') {
+    } else if (app && typeof app.handleNavigation === 'function') {
         app.handleNavigation('student-portal');
     }
 });
