@@ -9879,10 +9879,18 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const view = this.getAttribute('data-view');
-            app.handleNavigation(view);
+            if (typeof app.handleNavigation === 'function') {
+                app.handleNavigation(view);
+            } else if (typeof app.renderAlumniOverview === 'function') {
+                app.renderAlumniOverview();
+            }
         });
     });
     
-    // Initialize with default view (Student Portal for Clinical Affairs)
-    app.handleNavigation('student-portal');
+    // Initialize with Alumni Overview by default
+    if (app && typeof app.renderAlumniOverview === 'function') {
+        app.renderAlumniOverview();
+    } else if (typeof app.handleNavigation === 'function') {
+        app.handleNavigation('student-portal');
+    }
 });
