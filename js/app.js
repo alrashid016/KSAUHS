@@ -9792,3 +9792,97 @@ Dashboard.prototype.renderAlumniEcosystem = function() {
     `;
 };
 
+// ============ EVENT LISTENERS & INITIALIZATION ============
+
+// Initialize Dashboard on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const dashboard = new Dashboard();
+    
+    // Setup unit navigation
+    const globalNavLinks = document.querySelectorAll('.global-nav-link');
+    globalNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const unit = this.getAttribute('data-unit');
+            const navContainer = document.getElementById(`nav-${unit}`);
+            
+            if (navContainer) {
+                // Hide all sidebars
+                document.querySelectorAll('.unit-nav').forEach(nav => {
+                    nav.classList.add('hidden');
+                });
+                // Show selected unit
+                navContainer.classList.remove('hidden');
+                
+                // Update active state
+                globalNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+    
+    // Setup Alumni navigation
+    const alumniNavLinks = document.querySelectorAll('#nav-alumni .nav-link');
+    alumniNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const view = this.getAttribute('data-view');
+            
+            // Route to appropriate render method
+            switch(view) {
+                case 'alumni-overview':
+                    dashboard.renderAlumniOverview();
+                    break;
+                case 'alumni-directory':
+                    dashboard.renderAlumniDirectory();
+                    break;
+                case 'alumni-outcomes':
+                    dashboard.renderAlumniOutcomes();
+                    break;
+                case 'postgraduate-tracking':
+                    dashboard.renderPostgraduateTracking();
+                    break;
+                case 'alumni-engagement':
+                    dashboard.renderAlumniEngagement();
+                    break;
+                case 'mentorship-program':
+                    dashboard.renderMentorshipProgram();
+                    break;
+                case 'preceptor-pipeline':
+                    dashboard.renderPreceptorPipeline();
+                    break;
+                case 'alumni-events':
+                    dashboard.renderAlumniEvents();
+                    break;
+                case 'alumni-achievements':
+                    dashboard.renderAlumniAchievements();
+                    break;
+                case 'alumni-feedback':
+                    dashboard.renderAlumniFeedback();
+                    break;
+                case 'alumni-documents':
+                    dashboard.renderAlumniDocuments();
+                    break;
+                case 'alumni-governance':
+                    dashboard.renderAlumniGovernance();
+                    break;
+                case 'alumni-ecosystem':
+                    dashboard.renderAlumniEcosystem();
+                    break;
+            }
+        });
+    });
+    
+    // Setup other unit navigation (existing routes)
+    const otherNavLinks = document.querySelectorAll('.nav-link[data-view]:not(#nav-alumni .nav-link)');
+    otherNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const view = this.getAttribute('data-view');
+            dashboard.handleNavigation(view);
+        });
+    });
+    
+    // Initialize with default view (Student Portal for Clinical Affairs)
+    dashboard.handleNavigation('student-portal');
+});
