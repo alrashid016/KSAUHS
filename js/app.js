@@ -8495,14 +8495,28 @@ window.downloadMockReport = () => {
 };
 
 // Initialize App
-document.addEventListener('DOMContentLoaded', () => {
-    if (window.appStore) {
+const initApp = () => {
+    try {
+        if (!window.appStore) {
+            throw new Error('Store (window.appStore) not initialized');
+        }
         window.app = new App();
-    } else {
-        console.error('Store not initialized');
-        document.body.innerHTML = '<h1 style="color:red; padding:2rem;">Error: Data Store Failed to Load</h1>';
+        console.log('App initialized successfully', window.app);
+    } catch (err) {
+        console.error('App init failed:', err, err.stack);
+        const root = document.getElementById('app-root');
+        if (root) {
+            root.innerHTML = '<div style="padding:2rem; background:#ffebee; border:2px solid #c62828; color:#b71c1c; font-family:monospace; border-radius:8px;"><strong>App Initialization Error:</strong><br>' + (err && err.message ? err.message : JSON.stringify(err)) + '<br><br><small>' + (err && err.stack ? err.stack.substring(0, 500) : '') + '</small></div>';
+        }
     }
-});
+};
+
+// Run on DOM ready or immediately if already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    setTimeout(initApp, 100); // Ensure DOM is ready
+}
 
 // --- FACULTY DASHBOARD RESTORATION (Added manually) ---
 
