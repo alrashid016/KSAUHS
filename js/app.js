@@ -9910,20 +9910,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Initialize with Alumni Overview by default (fail fast with on-page error)
+    // Initialize with default view (restore APPE Hub or normal flow)
     try {
-        if (!window.ALUMNI_DATABASE) {
-            throw new Error('ALUMNI_DATABASE not loaded. Check alumni-data.js request.');
-        }
-        if (app && typeof app.renderAlumniOverview === 'function') {
+        if (app && typeof app.handleNavigation === 'function') {
+            // Use normal navigation flow if available (shows APPE Hub by default)
+            app.handleNavigation('appe-hub');
+        } else if (app && typeof app.renderAlumniOverview === 'function') {
             app.renderAlumniOverview();
-        } else if (app && typeof app.handleNavigation === 'function') {
-            app.handleNavigation('student-portal');
         } else {
-            throw new Error('App instance missing render/init methods.');
+            throw new Error('App instance missing render methods.');
         }
     } catch (err) {
-        console.error('Alumni init error:', err);
+        console.error('Init error:', err);
         const root = document.getElementById('app-root');
         if (root) {
             root.innerHTML = '<div style="padding:1.5rem; background:#ffebee; border:1px solid #f44336; color:#b71c1c; border-radius:8px;">Initialization error: ' + (err && err.message ? err.message : err) + '</div>';
